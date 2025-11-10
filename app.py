@@ -82,7 +82,7 @@ model, df = load_model()
 # ---------------------------
 # Header
 # ---------------------------
-st.markdown("<h1 style='text-align:center'>🏠 Prediksi Harga Rumah California</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align:center'>🏠 Prediksi Harga Rumah California Menggunakan Linear Regression</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align:center; color: #9aa3b2'>Model regresi linier untuk memprediksi harga rumah berdasarkan faktor ekonomi dan geografis.</p>", unsafe_allow_html=True)
 
 st.markdown("""
@@ -237,6 +237,7 @@ with col_right:
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
 
 
 
