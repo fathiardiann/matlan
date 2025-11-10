@@ -51,6 +51,14 @@ st.markdown("""
         background: linear-gradient(90deg,#3399FF,#0078FF);
         transform: scale(1.03);
     }
+    /* Geser gambar tanda seru supaya sejajar dengan gambar rumah */
+    img[src="https://raw.githubusercontent.com/fathiardiann/matlan/refs/heads/main/retro-block-exclamation-31200.jpg"] {
+        display: block;
+        margin-left: auto;
+        margin-right: 0;
+        transform: translateX(60px); /* geser kanan, atur sesuai selera */
+    }
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -116,7 +124,7 @@ def predict_price():
 col_left, col_right = st.columns([2,1])
 
 with col_left:
-    st.markdown("### 🔮 Estimasi Harga Rumah")
+    st.markdown("### 🏡 Estimasi Harga Rumah")
     if st.button("Prediksi Sekarang"):
         with st.spinner("🔍 Menghitung estimasi..."):
             time.sleep(0.8)
@@ -126,7 +134,7 @@ with col_left:
         st.success("✅ Prediksi selesai!")
         st.markdown(f"""
         <div class="card">
-            <h3>🏡 Estimasi Harga Rumah</h3>
+            <h3> 💰 Estimasi Harga Rumah</h3>
             <p style='font-size:28px; color:#00FFAA; margin:6px 0'><b>${pred:,.0f}</b></p>
             <p class='small-muted'>Rentang estimasi: ${lower:,.0f} – ${upper:,.0f}</p>
         </div>
@@ -224,6 +232,7 @@ with col_right:
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
 
 
 
