@@ -69,14 +69,14 @@ st.markdown("---")
 # ---------------------------
 st.sidebar.header("Masukkan Data Rumah")
 
-MedInc = st.sidebar.slider("Pendapatan Median (x10.000 USD)", 0.0, 15.0, 8.3, step=0.1)
+MedInc = st.sidebar.slider("Pendapatan Median (x10.000 USD)", 0.0, 20.0, 8.3, step=0.1)
 HouseAge = st.sidebar.slider("Usia Rumah (tahun)", 1, 50, 20)
 AveRooms = st.sidebar.slider("Rata-rata Jumlah Ruangan", 1.0, 10.0, 6.5, step=0.1)
 AveBedrms = st.sidebar.slider("Rata-rata Jumlah Kamar Tidur", 0.5, 5.0, 1.0, step=0.1)
 Population = st.sidebar.number_input("Populasi", min_value=100, max_value=100000, value=1200, step=100)
 AveOccup = st.sidebar.slider("Rata-rata Penghuni per Rumah", 1.0, 15.0, 2.8, step=0.1)
-Latitude = st.sidebar.slider("Latitude", 32.0, 42.0, 37.88, step=0.01)
-Longitude = st.sidebar.slider("Longitude", -125.0, -114.0, -122.25, step=0.01)
+Latitude = st.sidebar.slider("Latitude", 30.0, 42.0, 37.88, step=0.01)
+Longitude = st.sidebar.slider("Longitude", -128.0, -112.0, -122.25, step=0.01)
 
 # ---------------------------
 # Fungsi Prediksi
@@ -142,9 +142,11 @@ with col_right:
     else:
         p = None
 
-    # Ganti URL di bawah dengan URL gambar kamu dari GitHub nanti
-    test1 = "test= ? "
-    test2 = "test= ? "
+    # Gambar default (belum prediksi)
+    question_img_top = "https://upload.wikimedia.org/wikipedia/commons/9/99/Question_mark_black.png"
+    question_img_bottom = "https://upload.wikimedia.org/wikipedia/commons/9/99/Question_mark_black.png"
+
+    # Ganti URL di bawah dengan gambar kamu sendiri dari GitHub nanti
     low_img_top = "https://photos.zillowstatic.com/fp/0731b4b39b36cfc846d8e0fc3bfebb9f-cc_ft_768.webp"
     low_img_bottom = "https://photos.zillowstatic.com/fp/d16516c438eccf3e711a54b40fccb59e-uncropped_scaled_within_1536_1152.webp"
     mid30_top = "https://photos.zillowstatic.com/fp/cd54bbe7b3622f9ce004ab68e8fb2daa-cc_ft_768.webp"
@@ -155,14 +157,14 @@ with col_right:
     upper_img_bottom = "https://photos.zillowstatic.com/fp/81aaf55831b4eba303f8ccfd84fa64fc-sc_1536_1024.webp"
     luxury_img_top = "https://photos.zillowstatic.com/fp/9fc42898768a6ba3e122e74b14b45abf-sc_1536_1024.webp"
     luxury_img_bottom = "https://photos.zillowstatic.com/fp/c79963958a7a845fc082b727f582e533-sc_1536_1024.webp"
-    
 
+    # Pilih gambar berdasarkan status
     if p is None:
-        img1, img2 = low_img_top, low_img_bottom
+        img1, img2 = question_img_top, question_img_bottom
     elif p < 200000:
         img1, img2 = low_img_top, low_img_bottom
-    elif p < 300000:
-        img1, img2 = low_img_top, low_img_bottom
+    elif p < 350000:
+        img1, img2 = mid30_top, mid30_bottom
     elif p < 500000:
         img1, img2 = mid_img_top, mid_img_bottom
     elif p < 1000000:
@@ -170,15 +172,24 @@ with col_right:
     else:
         img1, img2 = luxury_img_top, luxury_img_bottom
 
+    # Tampilkan dua gambar
     st.image(img1, width=320)
     st.image(img2, width=320)
-    st.markdown("<div class='small-muted' style='margin-top:6px'>Gambar rumah di atas sesuai kategori harga.</div>", unsafe_allow_html=True)
+
+    # Keterangan
+    if p is None:
+        st.markdown("<div class='small-muted' style='margin-top:6px'>Tekan tombol <b>Prediksi Sekarang</b> untuk melihat hasil dan gambar rumah.</div>", unsafe_allow_html=True)
+    else:
+        st.markdown("<div class='small-muted' style='margin-top:6px'>Gambar rumah di atas sesuai kategori harga.</div>", unsafe_allow_html=True)
+
+ 
 
 # ---------------------------
 # Footer
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
 
 
 
