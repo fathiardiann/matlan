@@ -141,7 +141,16 @@ def predict_price():
         'Latitude': Latitude,
         'Longitude': Longitude
     }])
+
+    # Prediksi harga (model asli pakai nilai rata-rata dalam 100 ribu USD)
     pred = model.predict(sample)[0] * 100000
+
+    # Batasi nilai agar tidak negatif
+    if pred < 0:
+        pred = 0
+        st.warning("⚠️ Nilai prediksi terlalu rendah atau di luar jangkauan data asli California. "
+                   "Model otomatis mengatur nilai minimum menjadi $0.")
+
     lower, upper = pred * 0.95, pred * 1.05
     return pred, lower, upper
 
@@ -293,6 +302,7 @@ with col_right:
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
 
 
 
