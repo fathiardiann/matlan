@@ -161,21 +161,34 @@ with col_right:
     under80k2 = "https://photos.zillowstatic.com/fp/85de92383c5bd0a8ad28c243481cf9c5-cc_ft_768.webp"
     # Pilih gambar berdasarkan status
    # Pilih gambar berdasarkan status
+   # ===============================
+# Deskripsi kategori singkat
+# ===============================
     if p is None:
-        img3, img4 = question_img_top, question_img_bottom
-    elif p < 200000:
-        img1, img2 = low_img_top, low_img_bottom
-    elif p < 350000:
-        img1, img2 = mid30_top, mid30_bottom
-    elif p < 500000:
-        img1, img2 = mid_img_top, mid_img_bottom
-    elif p < 800000:
-        img1, img2 = under80k1, under80k2
-    elif p < 1000000:
-        img1, img2 = upper_img_top, upper_img_bottom
-    else:
-        img1, img2 = luxury_img_top, luxury_img_bottom
+        st.markdown("""
+        <div class='small-muted' style='margin-top:10px'>
+            💭 Masukkan data dan tekan <b>Prediksi Sekarang</b> untuk melihat estimasi harga rumah serta contoh tampilannya.
+        </div>
+        """, unsafe_allow_html=True)
     
+    elif p < 200000:
+        st.markdown("<div class='small-muted'>🏡 Rumah sederhana di area pinggiran dengan fasilitas dasar.</div>", unsafe_allow_html=True)
+    
+    elif p < 350000:
+        st.markdown("<div class='small-muted'>🏘️ Rumah kelas menengah di lokasi nyaman dekat fasilitas umum.</div>", unsafe_allow_html=True)
+    
+    elif p < 500000:
+        st.markdown("<div class='small-muted'>🏠 Rumah modern di lingkungan keluarga dengan akses mudah ke kota.</div>", unsafe_allow_html=True)
+    
+    elif p < 800000:
+        st.markdown("<div class='small-muted'>🏙️ Hunian eksklusif di kawasan populer dengan fasilitas lengkap.</div>", unsafe_allow_html=True)
+    
+    elif p < 1000000:
+        st.markdown("<div class='small-muted'>🏡 Rumah mewah di area premium dengan desain elegan dan halaman luas.</div>", unsafe_allow_html=True)
+    
+    else:
+        st.markdown("<div class='small-muted'>💎 Rumah super mewah di lokasi elit seperti Beverly Hills atau Malibu.</div>", unsafe_allow_html=True)
+
     if p is None:
         st.image(img3, width=220)
         st.image(img4, width=220)
@@ -199,6 +212,7 @@ with col_right:
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
 
 
 
