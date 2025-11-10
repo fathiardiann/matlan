@@ -1,5 +1,5 @@
 # =============================================
-# 🏠 Prediksi Harga Rumah California — Versi Final Polished
+# 🏠 Prediksi Harga Rumah California — Versi Simplified (1 Tab)
 # =============================================
 
 import streamlit as st
@@ -28,8 +28,6 @@ st.markdown("""
     body {background-color: #0E1117; color: #E6E6E6;}
     .card {background-color: #161B22; border-radius: 12px; padding: 16px; margin-bottom:10px;}
     .small-muted {color: #9aa3b2; font-size:12px;}
-    h1, h2, h3 {font-family: 'Poppins', sans-serif;}
-    body, p, div {font-family: 'Inter', sans-serif;}
     .stButton>button {
         background: linear-gradient(90deg,#0078FF,#0057CC);
         color: white;
@@ -44,9 +42,9 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ---------------------------
-# Load data & model (cached)
+# Load data & model
 # ---------------------------
-@st.cache_resource
+@st.cache_data
 def load_model():
     data = fetch_california_housing(as_frame=True)
     df = data.frame
@@ -63,37 +61,22 @@ model, df = load_model()
 # Header
 # ---------------------------
 st.markdown("<h1 style='text-align:center'>🏠 Prediksi Harga Rumah California</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align:center; color: #9aa3b2'>Aplikasi prediksi harga rumah berbasis data California Housing (Scikit-learn).</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align:center; color: #9aa3b2'>Model regresi linier sederhana dengan tampilan modern.</p>", unsafe_allow_html=True)
 st.markdown("---")
 
 # ---------------------------
 # Sidebar Input
 # ---------------------------
-st.sidebar.header("🧩 Masukkan Data Rumah")
+st.sidebar.header("Masukkan Data Rumah")
 
-st.sidebar.markdown("**💰 Pendapatan & Kondisi Rumah**")
-MedInc = st.sidebar.slider("Pendapatan Median (x10.000 USD)", 0.0, 25.0, 8.3, step=0.1)
-HouseAge = st.sidebar.slider("Usia Rumah (tahun)", 1, 80, 20)
-AveRooms = st.sidebar.slider("Rata-rata Jumlah Ruangan", 1.0, 15.0, 6.5, step=0.1)
-AveBedrms = st.sidebar.slider("Rata-rata Jumlah Kamar Tidur", 0.5, 8.0, 1.0, step=0.1)
-Population = st.sidebar.number_input("Populasi Area", min_value=50, max_value=200000, value=1200, step=100)
-AveOccup = st.sidebar.slider("Rata-rata Penghuni per Rumah", 0.5, 20.0, 2.8, step=0.1)
-
-st.sidebar.markdown("---")
-st.sidebar.markdown("**📍 Lokasi (Koordinat)**")
-Latitude = st.sidebar.slider("Latitude", 30.0, 45.0, 37.88, step=0.01)
+MedInc = st.sidebar.slider("Pendapatan Median (x10.000 USD)", 0.0, 20.0, 8.3, step=0.1)
+HouseAge = st.sidebar.slider("Usia Rumah (tahun)", 1, 50, 20)
+AveRooms = st.sidebar.slider("Rata-rata Jumlah Ruangan", 1.0, 10.0, 6.5, step=0.1)
+AveBedrms = st.sidebar.slider("Rata-rata Jumlah Kamar Tidur", 0.5, 5.0, 1.0, step=0.1)
+Population = st.sidebar.number_input("Populasi", min_value=100, max_value=100000, value=1200, step=100)
+AveOccup = st.sidebar.slider("Rata-rata Penghuni per Rumah", 1.0, 15.0, 2.8, step=0.1)
+Latitude = st.sidebar.slider("Latitude", 30.0, 42.0, 37.88, step=0.01)
 Longitude = st.sidebar.slider("Longitude", -128.0, -112.0, -122.25, step=0.01)
-
-st.sidebar.markdown("---")
-if st.sidebar.button("🔄 Reset Input"):
-    st.experimental_rerun()
-
-st.sidebar.info("""
-**Tentang Aplikasi**
-- Dataset: *California Housing* (Scikit-learn)
-- Model: Linear Regression
-- Developer: [Nama Kamu]
-""")
 
 # ---------------------------
 # Fungsi Prediksi
@@ -116,16 +99,10 @@ def predict_price():
 # ---------------------------
 # Halaman Prediksi
 # ---------------------------
-col_left, col_right = st.columns([1.8, 1.2])
+col_left, col_right = st.columns([2,1])
 
 with col_left:
     st.markdown("### 🔮 Estimasi Harga Rumah")
-    st.markdown("""
-    <small style='color:#9aa3b2'>
-    Masukkan parameter rumah di sidebar lalu tekan tombol <b>Prediksi Sekarang</b> untuk melihat estimasi harga.
-    </small>
-    """, unsafe_allow_html=True)
-
     if st.button("Prediksi Sekarang"):
         with st.spinner("🔍 Menghitung estimasi..."):
             time.sleep(0.8)
@@ -133,13 +110,10 @@ with col_left:
             st.session_state["pred"] = pred
 
         st.success("✅ Prediksi selesai!")
-        st.balloons()
-
         st.markdown(f"""
         <div class="card">
             <h3>🏡 Estimasi Harga Rumah</h3>
-            <p style='font-size:32px; color:#00FFAA; margin:6px 0'><b>${pred:,.0f}</b></p>
-            <p class='small-muted'>≈ {pred/1000:,.1f} ribu USD</p>
+            <p style='font-size:28px; color:#00FFAA; margin:6px 0'><b>${pred:,.0f}</b></p>
             <p class='small-muted'>Rentang estimasi: ${lower:,.0f} – ${upper:,.0f}</p>
         </div>
         """, unsafe_allow_html=True)
@@ -158,20 +132,11 @@ with col_left:
                 insight = f"📉 Harga ini {abs(diff_pct):.1f}% lebih rendah dari rata-rata area sekitar (${area_avg:,.0f})."
         else:
             insight = "ℹ️ Data area sekitarmu terbatas — gunakan lokasi lain untuk perbandingan lokal."
+
         st.markdown(f"<div class='card'><p>{insight}</p></div>", unsafe_allow_html=True)
 
-        # Narasi tambahan
-        if pred < 200000:
-            comment = "🏘️ Termasuk kategori rumah sederhana, biasanya di area suburban atau rural."
-        elif pred < 500000:
-            comment = "🏠 Rumah keluarga menengah di area perkotaan kecil."
-        elif pred < 1000000:
-            comment = "🏡 Properti bernilai tinggi di area metropolitan populer."
-        else:
-            comment = "💎 Rumah mewah! Biasanya dekat pantai atau pusat kota besar."
-        st.info(comment)
-
 with col_right:
+    # Tentukan gambar berdasarkan prediksi terakhir
     if "pred" in st.session_state:
         p = st.session_state["pred"]
     else:
@@ -181,15 +146,17 @@ with col_right:
     question_img_top = "https://upload.wikimedia.org/wikipedia/commons/9/99/Question_mark_black.png"
     question_img_bottom = "https://upload.wikimedia.org/wikipedia/commons/9/99/Question_mark_black.png"
 
-    # Ganti ini nanti dengan URL GitHub kamu
-    low_img_top = "https://placehold.co/420x250/333/FFF?text=Low+House+1"
-    low_img_bottom = "https://placehold.co/420x250/333/FFF?text=Low+House+2"
-    mid_img_top = "https://placehold.co/420x250/555/FFF?text=Mid+House+1"
-    mid_img_bottom = "https://placehold.co/420x250/555/FFF?text=Mid+House+2"
-    upper_img_top = "https://placehold.co/420x250/777/FFF?text=Upper+House+1"
-    upper_img_bottom = "https://placehold.co/420x250/777/FFF?text=Upper+House+2"
-    luxury_img_top = "https://placehold.co/420x250/999/FFF?text=Luxury+House+1"
-    luxury_img_bottom = "https://placehold.co/420x250/999/FFF?text=Luxury+House+2"
+    # Ganti URL di bawah dengan gambar kamu sendiri dari GitHub nanti
+    low_img_top = "https://photos.zillowstatic.com/fp/0731b4b39b36cfc846d8e0fc3bfebb9f-cc_ft_768.webp"
+    low_img_bottom = "https://photos.zillowstatic.com/fp/d16516c438eccf3e711a54b40fccb59e-uncropped_scaled_within_1536_1152.webp"
+    mid30_top = "https://photos.zillowstatic.com/fp/cd54bbe7b3622f9ce004ab68e8fb2daa-cc_ft_768.webp"
+    mid30_bottom = "https://photos.zillowstatic.com/fp/aec6d2aea8e0a8595706875ebda0e314-uncropped_scaled_within_1536_1152.webp"
+    mid_img_top = "https://photos.zillowstatic.com/fp/0fa4dfae01f5cf06697212fcce9628e6-cc_ft_768.webp"
+    mid_img_bottom = "https://photos.zillowstatic.com/fp/8ff43a4c45c28b2a2f350cefa91bb669-cc_ft_384.webp"
+    upper_img_top = "https://photos.zillowstatic.com/fp/a2081284f721136cdc3469fe474f369c-sc_1536_1024.webp"
+    upper_img_bottom = "https://photos.zillowstatic.com/fp/81aaf55831b4eba303f8ccfd84fa64fc-sc_1536_1024.webp"
+    luxury_img_top = "https://photos.zillowstatic.com/fp/9fc42898768a6ba3e122e74b14b45abf-sc_1536_1024.webp"
+    luxury_img_bottom = "https://photos.zillowstatic.com/fp/c79963958a7a845fc082b727f582e533-sc_1536_1024.webp"
 
     # Pilih gambar berdasarkan status
     if p is None:
@@ -206,18 +173,24 @@ with col_right:
         img1, img2 = upper_img_top, upper_img_bottom
     else:
         img1, img2 = luxury_img_top, luxury_img_bottom
-
+    # Tampilkan dua gambar
     st.image(img1, width=420)
     st.image(img2, width=420)
 
+    # Keterangan
     if p is None:
         st.markdown("<div class='small-muted' style='margin-top:6px'>Tekan tombol <b>Prediksi Sekarang</b> untuk melihat hasil dan gambar rumah.</div>", unsafe_allow_html=True)
     else:
         st.markdown("<div class='small-muted' style='margin-top:6px'>Gambar rumah di atas sesuai kategori harga.</div>", unsafe_allow_html=True)
 
+ 
+
 # ---------------------------
 # Footer
 # ---------------------------
 st.markdown("---")
-st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor | Dibuat dengan ❤️ menggunakan Streamlit</div>", unsafe_allow_html=True)
+st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
+
+
 
