@@ -88,21 +88,20 @@ st.markdown("""
 <style>
 @font-face {
     font-family: 'JJK';
-    src: url('fonts/jjk.ttf') format('truetype');
+    src: url('https://raw.githubusercontent.com/fathiardiann/matlan/refs/heads/main/fonts/jjk.ttf') format('truetype');
 }
-
 .kelompok5 {
     text-align: center;
     font-family: 'JJK', sans-serif;
-    font-size: 18px;                 /* lebih kecil, seukuran deskripsi bawah */
-    color: #9aa3b2;                  /* sama seperti tulisan "Model regresi..." */
-    margin-top: -6px;                /* rapet ke atas */
-    margin-bottom: -8px;             /* rapet ke bawah */
+    font-size: 36px;
+    color: #9aa3b2;
+    margin-top: -10px;
     letter-spacing: 1px;
-    text-shadow: none;               /* hapus efek glow */
+    text-shadow: 0 0 8px rgba(255, 50, 50, 0.6), 0 0 15px rgba(255, 50, 50, 0.3);
 }
 </style>
 """, unsafe_allow_html=True)
+
 
 st.markdown("<div class='kelompok5'>Kelompok 5</div>", unsafe_allow_html=True)
 
@@ -256,6 +255,7 @@ with col_right:
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
 
 
 
