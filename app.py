@@ -143,18 +143,25 @@ with col_right:
         p = None
 
     # Ganti URL di bawah dengan URL gambar kamu dari GitHub nanti
-    low_img_top = "https://mario.wiki.gallery/images/thumb/7/7f/Question_Block_-_Nintendo_JP_website.png/600px-Question_Block_-_Nintendo_JP_website.png?20210422205558"
-    low_img_bottom = "https://mario.wiki.gallery/images/thumb/7/7f/Question_Block_-_Nintendo_JP_website.png/600px-Question_Block_-_Nintendo_JP_website.png?20210422205558"
-    mid_img_top = "https://placehold.co/320x180/555/FFF?text=Mid+1"
-    mid_img_bottom = "https://placehold.co/320x180/555/FFF?text=Mid+2"
-    upper_img_top = "https://placehold.co/320x180/777/FFF?text=Upper+1"
-    upper_img_bottom = "https://placehold.co/320x180/777/FFF?text=Upper+2"
-    luxury_img_top = "https://placehold.co/320x180/999/FFF?text=Luxury+1"
-    luxury_img_bottom = "https://placehold.co/320x180/999/FFF?text=Luxury+2"
+    test1 = "test= ? "
+    test2 = "test= ? "
+    low_img_top = "https://photos.zillowstatic.com/fp/0731b4b39b36cfc846d8e0fc3bfebb9f-cc_ft_768.webp"
+    low_img_bottom = "https://photos.zillowstatic.com/fp/d16516c438eccf3e711a54b40fccb59e-uncropped_scaled_within_1536_1152.webp"
+    mid30_top = "https://photos.zillowstatic.com/fp/cd54bbe7b3622f9ce004ab68e8fb2daa-cc_ft_768.webp"
+    mid30_bottom = "https://photos.zillowstatic.com/fp/aec6d2aea8e0a8595706875ebda0e314-uncropped_scaled_within_1536_1152.webp"
+    mid_img_top = "https://photos.zillowstatic.com/fp/0fa4dfae01f5cf06697212fcce9628e6-cc_ft_768.webp"
+    mid_img_bottom = "https://photos.zillowstatic.com/fp/8ff43a4c45c28b2a2f350cefa91bb669-cc_ft_384.webp"
+    upper_img_top = "https://photos.zillowstatic.com/fp/a2081284f721136cdc3469fe474f369c-sc_1536_1024.webp"
+    upper_img_bottom = "https://photos.zillowstatic.com/fp/81aaf55831b4eba303f8ccfd84fa64fc-sc_1536_1024.webp2"
+    luxury_img_top = "https://photos.zillowstatic.com/fp/9fc42898768a6ba3e122e74b14b45abf-sc_1536_1024.webp"
+    luxury_img_bottom = "https://photos.zillowstatic.com/fp/c79963958a7a845fc082b727f582e533-sc_1536_1024.webp"
+    
 
     if p is None:
         img1, img2 = low_img_top, low_img_bottom
     elif p < 200000:
+        img1, img2 = low_img_top, low_img_bottom
+    elif p < 300000:
         img1, img2 = low_img_top, low_img_bottom
     elif p < 500000:
         img1, img2 = mid_img_top, mid_img_bottom
@@ -172,4 +179,5 @@ with col_right:
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
 
