@@ -1,6 +1,6 @@
 # =============================================
 # 🏠 PREDIKSI HARGA RUMAH (CALIFORNIA HOUSING)
-# Versi Kartu Simetris & Terpusat (Modern Clean)
+# Versi Dashboard Terpusat + Animasi Hover
 # =============================================
 
 import streamlit as st
@@ -16,7 +16,7 @@ from sklearn.metrics import mean_squared_error, r2_score
 # --- Konfigurasi halaman
 st.set_page_config(page_title="Prediksi Harga Rumah", page_icon="🏠", layout="wide")
 
-# --- CSS Custom untuk layout tengah dan kartu
+# --- CSS Custom
 st.markdown("""
 <style>
 body {
@@ -32,28 +32,42 @@ body {
     margin: 0 auto;
 }
 .card {
-    background: #161B22;
+    background: linear-gradient(145deg, #161B22, #1C222A);
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0px 0px 10px rgba(255,255,255,0.05);
+    box-shadow: 0px 0px 10px rgba(0,255,170,0.05);
     text-align: center;
     width: 100%;
+    transition: all 0.3s ease-in-out;
+    transform: scale(1);
+}
+.card:hover {
+    transform: scale(1.04);
+    box-shadow: 0px 0px 25px rgba(0,255,170,0.25);
 }
 .metric-value {
     font-size: 26px;
     font-weight: bold;
     color: #00FFAA;
+    transition: 0.3s ease;
 }
 .metric-label {
     font-size: 16px;
     color: #aaa;
 }
+.metric-value:hover {
+    color: #6CF5FF;
+}
 .section {
-    margin-top: 20px;
+    margin-top: 25px;
     background: #161B22;
     padding: 25px;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(255,255,255,0.05);
+    transition: 0.3s;
+}
+.section:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 200, 0.15);
 }
 </style>
 """, unsafe_allow_html=True)
@@ -61,7 +75,7 @@ body {
 # --- Judul
 st.markdown("<div class='center-container'><h1 style='text-align:center;'>🏠 Prediksi Harga Rumah California</h1></div>", unsafe_allow_html=True)
 
-# --- Model
+# --- Load & train model
 data = fetch_california_housing(as_frame=True)
 df = data.frame
 X = df[data.feature_names]
@@ -97,11 +111,11 @@ pred = model.predict(sample)[0] * 100000
 # --- Kontainer Tengah
 st.markdown("<div class='center-container'>", unsafe_allow_html=True)
 
-# --- Estimasi Harga Rumah (Baris 1)
-st.markdown("<div class='card'><h3>🏡 Estimasi Harga Rumah:</h3>", unsafe_allow_html=True)
+# --- Estimasi Harga Rumah
+st.markdown("<div class='card'><h3>💰 Estimasi Harga Rumah</h3>", unsafe_allow_html=True)
 st.markdown(f"<div class='metric-value'>${pred:,.0f}</div></div>", unsafe_allow_html=True)
 
-# --- Baris 2 (MSE & R2)
+# --- Baris Kartu Metrik
 col1, col2 = st.columns(2)
 with col1:
     st.markdown("<div class='card'>", unsafe_allow_html=True)
@@ -112,17 +126,15 @@ with col2:
     st.markdown("<div class='metric-label'>📈 R² Score</div>", unsafe_allow_html=True)
     st.markdown(f"<div class='metric-value'>{r2:.4f}</div></div>", unsafe_allow_html=True)
 
-# --- Baris 3: Koefisien Model
+# --- Koefisien Model
 st.markdown("<div class='section'><h3 style='text-align:center;'>⚙️ Koefisien Model</h3>", unsafe_allow_html=True)
-coef_df = pd.DataFrame({"Feature": X.columns, "Koefisien": model.coef_.round(4)})
-coef_df = coef_df.sort_values(by="Koefisien", ascending=False)
+coef_df = pd.DataFrame({"Feature": X.columns, "Koefisien": model.coef_.round(4)}).sort_values(by="Koefisien", ascending=False)
 st.dataframe(coef_df, use_container_width=True)
 st.markdown("</div>", unsafe_allow_html=True)
 
-# --- Baris 4: Visualisasi
+# --- Visualisasi
 st.markdown("<div class='section'>", unsafe_allow_html=True)
 st.markdown("<h3 style='text-align:center;'>📊 Visualisasi</h3>", unsafe_allow_html=True)
-
 col3, col4 = st.columns(2)
 with col3:
     fig1, ax1 = plt.subplots(figsize=(5,4))
@@ -130,7 +142,6 @@ with col3:
     ax1.set_xlabel("Pendapatan Median (x10.000 USD)")
     ax1.set_ylabel("Harga Rumah Median (x100.000 USD)")
     st.pyplot(fig1)
-
 with col4:
     fig2, ax2 = plt.subplots(figsize=(5,4))
     sns.scatterplot(x=y_test, y=y_pred, alpha=0.5, color="#00FFAA", ax=ax2)
@@ -138,7 +149,6 @@ with col4:
     ax2.set_xlabel("Harga Aktual (x100.000 USD)")
     ax2.set_ylabel("Harga Prediksi")
     st.pyplot(fig2)
-
 st.markdown("</div>", unsafe_allow_html=True)
 
 st.markdown("</div>", unsafe_allow_html=True)
