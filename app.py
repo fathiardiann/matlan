@@ -152,7 +152,7 @@ with col_right:
     mid_img_top = "https://photos.zillowstatic.com/fp/0fa4dfae01f5cf06697212fcce9628e6-cc_ft_768.webp"
     mid_img_bottom = "https://photos.zillowstatic.com/fp/8ff43a4c45c28b2a2f350cefa91bb669-cc_ft_384.webp"
     upper_img_top = "https://photos.zillowstatic.com/fp/a2081284f721136cdc3469fe474f369c-sc_1536_1024.webp"
-    upper_img_bottom = "https://photos.zillowstatic.com/fp/81aaf55831b4eba303f8ccfd84fa64fc-sc_1536_1024.webp2"
+    upper_img_bottom = "https://photos.zillowstatic.com/fp/81aaf55831b4eba303f8ccfd84fa64fc-sc_1536_1024.webp"
     luxury_img_top = "https://photos.zillowstatic.com/fp/9fc42898768a6ba3e122e74b14b45abf-sc_1536_1024.webp"
     luxury_img_bottom = "https://photos.zillowstatic.com/fp/c79963958a7a845fc082b727f582e533-sc_1536_1024.webp"
     
@@ -179,5 +179,6 @@ with col_right:
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
 
 
