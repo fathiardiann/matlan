@@ -26,7 +26,17 @@ st.set_page_config(
 st.markdown("""
 <style>
     body {background-color: #0E1117; color: #E6E6E6;}
-    .card {background-color: #161B22; border-radius: 12px; padding: 16px; margin-bottom:10px;}
+    .card {
+        background-color: #161B22;
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom:10px;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 4px 16px rgba(0, 200, 255, 0.15);
+    }
     .small-muted {color: #9aa3b2; font-size:12px;}
     .stButton>button {
         background: linear-gradient(90deg,#0078FF,#0057CC);
@@ -37,9 +47,13 @@ st.markdown("""
         font-weight: 600;
         transition: all 0.3s ease;
     }
-    .stButton>button:hover {background: linear-gradient(90deg,#3399FF,#0078FF); transform: scale(1.03);}
+    .stButton>button:hover {
+        background: linear-gradient(90deg,#3399FF,#0078FF);
+        transform: scale(1.03);
+    }
 </style>
 """, unsafe_allow_html=True)
+
 
 # ---------------------------
 # Load data & model
@@ -119,21 +133,7 @@ with col_left:
         """, unsafe_allow_html=True)
 
         # Insight area lokal
-        area_mask = (
-            (df["Latitude"].between(Latitude - 0.5, Latitude + 0.5)) &
-            (df["Longitude"].between(Longitude - 0.5, Longitude + 0.5))
-        )
-        if area_mask.any():
-            area_avg = df.loc[area_mask, "MedHouseVal"].mean() * 100000
-            diff_pct = (pred - area_avg) / area_avg * 100
-            if diff_pct >= 0:
-                insight = f"🏗️ Harga ini {diff_pct:.1f}% lebih tinggi dari rata-rata area sekitar (${area_avg:,.0f})."
-            else:
-                insight = f"📉 Harga ini {abs(diff_pct):.1f}% lebih rendah dari rata-rata area sekitar (${area_avg:,.0f})."
-        else:
-            insight = "ℹ️ Data area sekitarmu terbatas — gunakan lokasi lain untuk perbandingan lokal."
-
-        st.markdown(f"<div class='card'><p>{insight}</p></div>", unsafe_allow_html=True)
+       
 
 with col_right:
     # Tentukan gambar berdasarkan prediksi terakhir
@@ -199,6 +199,7 @@ with col_right:
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
 
 
 
