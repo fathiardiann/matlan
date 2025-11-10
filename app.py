@@ -83,6 +83,29 @@ model, df = load_model()
 # Header
 # ---------------------------
 st.markdown("<h1 style='text-align:center'>🏠 Prediksi Harga Rumah California</h1>", unsafe_allow_html=True)
+# Tambahkan CSS font + style tulisan
+st.markdown("""
+<style>
+@font-face {
+    font-family: 'JJK';
+    src: url('fonts/jjk.ttf') format('truetype');
+}
+
+.kelompok5 {
+    text-align: center;
+    font-family: 'JJK', sans-serif;
+    font-size: 36px;
+    color: #E6E6E6;
+    margin-top: -10px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px rgba(255, 50, 50, 0.6), 0 0 15px rgba(255, 50, 50, 0.3);
+}
+</style>
+""", unsafe_allow_html=True)
+
+st.markdown("<div class='kelompok5'>Kelompok 5</div>", unsafe_allow_html=True)
+st.markdown("---")
+
 st.markdown("<p style='text-align:center; color: #9aa3b2'>Model regresi linier sederhana dengan tampilan modern.</p>", unsafe_allow_html=True)
 st.markdown("---")
 
@@ -232,6 +255,7 @@ with col_right:
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
 
 
 
