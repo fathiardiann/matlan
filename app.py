@@ -155,22 +155,34 @@ col_left, col_right = st.columns([2,1])
 
 with col_left:
     st.markdown("### 🏡 Estimasi Harga Rumah")
+
+    # Tombol prediksi — simpan juga lower & upper ke session state agar tersedia di area lain
     if st.button("Prediksi Sekarang"):
         with st.spinner("🔍 Menghitung estimasi..."):
             time.sleep(0.8)
             pred, lower, upper = predict_price()
             st.session_state["pred"] = pred
+            st.session_state["lower"] = lower
+            st.session_state["upper"] = upper
 
         st.success("✅ Prediksi selesai!")
+
+    # Ambil prediksi dari session_state (bisa None jika belum ada)
+    p = st.session_state.get("pred", None)
+    lower = st.session_state.get("lower", None)
+    upper = st.session_state.get("upper", None)
+
+    # Tampilkan kartu hasil hanya jika sudah ada prediksi
+    if p is not None:
         st.markdown(f"""
         <div class="card">
             <h3> 💰 Estimasi Harga Rumah</h3>
-            <p style='font-size:28px; color:#00FFAA; margin:6px 0'><b>${pred:,.0f}</b></p>
+            <p style='font-size:28px; color:#00FFAA; margin:6px 0'><b>${p:,.0f}</b></p>
             <p class='small-muted'>Rentang estimasi: ${lower:,.0f} – ${upper:,.0f}</p>
         </div>
         """, unsafe_allow_html=True)
-                # Insight / deskripsi tambahan di bawah hasil prediksi
-    if p:
+
+        # Insight / deskripsi tambahan di bawah hasil prediksi
         if p < 200000:
             desc = """
             Harga rumah tergolong <b>rendah</b>, kemungkinan berada di area pedesaan atau pinggiran kota
@@ -209,6 +221,10 @@ with col_left:
             </p>
         </div>
         """, unsafe_allow_html=True)
+
+    else:
+        # Pesan ringan sebelum prediksi dijalankan
+        st.markdown("<div class='small-muted'>Tekan tombol <b>Prediksi Sekarang</b> untuk melihat estimasi harga dan insight.</div>", unsafe_allow_html=True)
 
 
         # Insight area lokal
@@ -284,6 +300,7 @@ with col_right:
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
 
 
 
