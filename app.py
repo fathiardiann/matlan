@@ -222,9 +222,9 @@ with col_left:
     </div>
     """, unsafe_allow_html=True)
 
-else:
+    else:
     # Pesan ringan sebelum prediksi dijalankan
-    st.markdown("<div class='small-muted'>Tekan tombol <b>Prediksi Sekarang</b> untuk melihat estimasi harga dan insight.</div>", unsafe_allow_html=True)
+        st.markdown("<div class='small-muted'>Tekan tombol <b>Prediksi Sekarang</b> untuk melihat estimasi harga dan insight.</div>", unsafe_allow_html=True)
 
 
         # Insight area lokal
@@ -300,6 +300,7 @@ with col_right:
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
 
 
 
