@@ -183,48 +183,48 @@ with col_left:
         """, unsafe_allow_html=True)
 
         # Insight / deskripsi tambahan di bawah hasil prediksi
-        if p < 200000:
-            desc = """
-            Harga rumah tergolong <b>rendah</b>, kemungkinan berada di area pedesaan atau pinggiran kota
-            dengan akses terbatas ke pusat ekonomi utama.
-            """
-        elif p < 350000:
-            desc = """
-            Rumah ini berada di kategori <b>menengah ke bawah</b>, umumnya di wilayah suburban
-            dengan fasilitas standar dan lingkungan yang tenang.
-            """
-        elif p < 500000:
-            desc = """
-            Termasuk kategori <b>menengah</b> — lokasi kemungkinan di area berkembang dengan akses
-            cukup baik ke fasilitas umum dan transportasi.
-            """
-        elif p < 800000:
-            desc = """
-            Harga rumah ini <b>di atas rata-rata</b>, biasanya berlokasi di kawasan perkotaan
-            dengan lingkungan yang strategis dan permintaan tinggi.
-            """
-        elif p < 1000000:
-            desc = """
-            Termasuk kategori <b>premium</b> — rumah di kawasan populer dengan fasilitas lengkap
-            dan nilai investasi yang tinggi.
-            """
-        else:
-            desc = """
-            <b>Rumah mewah</b> — berada di area eksklusif dengan fasilitas terbaik dan nilai pasar yang stabil.
-            Cocok untuk investasi jangka panjang.
-            """
-
-        st.markdown(f"""
-        <div class="card" style='margin-top:10px'>
-            <p style='font-size:15px; color:#9aa3b2; text-align:justify;'>
-            {desc}
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
-
+    if p < 200000:
+        desc = """
+        Harga rumah tergolong <b>rendah</b>, kemungkinan berada di area pedesaan atau pinggiran kota
+        dengan akses terbatas ke pusat ekonomi utama.
+        """
+    elif p < 350000:
+        desc = """
+        Rumah ini berada di kategori <b>menengah ke bawah</b>, umumnya di wilayah suburban
+        dengan fasilitas standar dan lingkungan yang tenang.
+        """
+    elif p < 500000:
+        desc = """
+        Termasuk kategori <b>menengah</b> — lokasi kemungkinan di area berkembang dengan akses
+        cukup baik ke fasilitas umum dan transportasi.
+        """
+    elif p < 800000:
+        desc = """
+        Harga rumah ini <b>di atas rata-rata</b>, biasanya berlokasi di kawasan perkotaan
+        dengan lingkungan yang strategis dan permintaan tinggi.
+        """
+    elif p < 1000000:
+        desc = """
+        Termasuk kategori <b>premium</b> — rumah di kawasan populer dengan fasilitas lengkap
+        dan nilai investasi yang tinggi.
+        """
     else:
-        # Pesan ringan sebelum prediksi dijalankan
-        st.markdown("<div class='small-muted'>Tekan tombol <b>Prediksi Sekarang</b> untuk melihat estimasi harga dan insight.</div>", unsafe_allow_html=True)
+        desc = """
+        <b>Rumah mewah</b> — berada di area eksklusif dengan fasilitas terbaik dan nilai pasar yang stabil.
+        Cocok untuk investasi jangka panjang.
+        """
+
+    st.markdown(f"""
+    <div class="card" style='margin-top:10px'>
+        <p style='font-size:15px; color:#9aa3b2; text-align:justify;'>
+        {desc}
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+else:
+    # Pesan ringan sebelum prediksi dijalankan
+    st.markdown("<div class='small-muted'>Tekan tombol <b>Prediksi Sekarang</b> untuk melihat estimasi harga dan insight.</div>", unsafe_allow_html=True)
 
 
         # Insight area lokal
@@ -300,6 +300,7 @@ with col_right:
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
 
 
 
