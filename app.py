@@ -143,8 +143,8 @@ with col_right:
         p = None
 
     # Ganti URL di bawah dengan URL gambar kamu dari GitHub nanti
-    low_img_top = "https://photos.zillowstatic.com/fp/cd54bbe7b3622f9ce004ab68e8fb2daa-cc_ft_768.webp"
-    low_img_bottom = "https://photos.zillowstatic.com/fp/ba2a44505c0fcb18bf65f6ca853191fd-cc_ft_768.webp"
+    low_img_top = "https://mario.wiki.gallery/images/thumb/7/7f/Question_Block_-_Nintendo_JP_website.png/600px-Question_Block_-_Nintendo_JP_website.png?20210422205558"
+    low_img_bottom = "https://mario.wiki.gallery/images/thumb/7/7f/Question_Block_-_Nintendo_JP_website.png/600px-Question_Block_-_Nintendo_JP_website.png?20210422205558"
     mid_img_top = "https://placehold.co/320x180/555/FFF?text=Mid+1"
     mid_img_bottom = "https://placehold.co/320x180/555/FFF?text=Mid+2"
     upper_img_top = "https://placehold.co/320x180/777/FFF?text=Upper+1"
@@ -172,3 +172,4 @@ with col_right:
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
