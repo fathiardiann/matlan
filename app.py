@@ -164,7 +164,7 @@ with col_right:
    # ===============================
 # Deskripsi kategori singkat
 # ===============================
-     if p is None:
+    if p is None:
         img3, img4 = question_img_top, question_img_bottom
     elif p < 200000:
         img1, img2 = low_img_top, low_img_bottom
@@ -228,6 +228,7 @@ with col_right:
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
 
 
 
