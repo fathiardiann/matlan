@@ -88,9 +88,8 @@ st.markdown("""
 <style>
 @font-face {
     font-family: 'JJK';
-    src: url('fonts/jjk.ttf') format('truetype');
+    src: url('https://raw.githubusercontent.com/fathiardiann/matlan/refs/heads/main/fonts/jjk.ttf') format('truetype');
 }
-
 .kelompok5 {
     text-align: center;
     font-family: 'JJK', sans-serif;
@@ -102,6 +101,7 @@ st.markdown("""
 }
 </style>
 """, unsafe_allow_html=True)
+
 
 st.markdown("<div class='kelompok5'>Kelompok 5</div>", unsafe_allow_html=True)
 st.markdown("---")
@@ -255,6 +255,7 @@ with col_right:
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
 
 
 
