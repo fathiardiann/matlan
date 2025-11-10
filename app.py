@@ -162,32 +162,29 @@ with col_right:
     # Pilih gambar berdasarkan status
    # Pilih gambar berdasarkan status
     if p is None:
-        img1, img2 = question_img_top, question_img_bottom
         img3, img4 = question_img_top, question_img_bottom
     elif p < 200000:
         img1, img2 = low_img_top, low_img_bottom
-        img3, img4 = low_img_top, low_img_bottom
     elif p < 350000:
         img1, img2 = mid30_top, mid30_bottom
-        img3, img4 = mid30_top, mid30_bottom
     elif p < 500000:
         img1, img2 = mid_img_top, mid_img_bottom
-        img3, img4 = mid_img_top, mid_img_bottom
     elif p < 800000:
         img1, img2 = under80k1, under80k2
-        img3, img4 = under80k1, under80k2
     elif p < 1000000:
         img1, img2 = upper_img_top, upper_img_bottom
-        img3, img4 = upper_img_top, upper_img_bottom
     else:
         img1, img2 = luxury_img_top, luxury_img_bottom
-        img3, img4 = luxury_img_top, luxury_img_bottom
     
-    # Tampilkan gambar
-    st.image(img3, width=220)
-    st.image(img4, width=220)
-    st.image(img1, width=420)
-    st.image(img2, width=420)
+    if p is None:
+        st.image(img3, width=220)
+        st.image(img4, width=220)
+    else:
+        st.image(img3, width=220)
+        st.image(img4, width=220)
+        st.image(img1, width=420)
+        st.image(img2, width=420)
+
 
     
 
@@ -204,6 +201,7 @@ with col_right:
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
 
 
 
