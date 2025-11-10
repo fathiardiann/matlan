@@ -171,13 +171,18 @@ with col_left:
 
     # Tampilkan kartu hasil hanya jika sudah ada prediksi
     if p is not None:
+        USD_TO_IDR = 16000  # bisa ubah kurs sesuai kebutuhan
+        rupiah = p * USD_TO_IDR
+
         st.markdown(f"""
         <div class="card">
             <h3> 💰 Estimasi Harga Rumah</h3>
             <p style='font-size:28px; color:#00FFAA; margin:6px 0'><b>${p:,.0f}</b></p>
+            <p style='font-size:20px; color:#FFD700; margin:-5px 0 8px 0'><b>≈ Rp{rupiah:,.0f}</b></p>
             <p class='small-muted'>Rentang estimasi: ${lower:,.0f} – ${upper:,.0f}</p>
         </div>
         """, unsafe_allow_html=True)
+
 
         # ================================
         # Deskripsi kategori harga
@@ -288,4 +293,5 @@ with col_right:
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
 
