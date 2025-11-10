@@ -175,10 +175,11 @@ with col_right:
     else:
         img1, img2 = luxury_img_top, luxury_img_bottom
     # Tampilkan dua gambar
-    st.image(img1, width=420)
-    st.image(img2, width=420)
     st.image(img3, width=220)
     st.image(img4, width=220)
+    st.image(img1, width=420)
+    st.image(img2, width=420)
+    
 
     # Keterangan
     if p is None:
@@ -193,6 +194,7 @@ with col_right:
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
 
 
 
