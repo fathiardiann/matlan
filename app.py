@@ -83,9 +83,6 @@ model, df = load_model()
 # Header
 # ---------------------------
 st.markdown("<h1 style='text-align:center'>🏠 Prediksi Harga Rumah California</h1>", unsafe_allow_html=True)
-
-st.markdown("<p style='text-align:center; color: #9aa3b2'>Model regresi linier untuk memprediksi harga rumah berdasarkan faktor ekonomi dan geografis.</p>", unsafe_allow_html=True)
-# Tambahkan CSS font + style tulisan
 st.markdown("""
 <style>
 @font-face {
@@ -95,17 +92,19 @@ st.markdown("""
 .kelompok5 {
     text-align: center;
     font-family: 'JJK', sans-serif;
-    font-size: 36px;
+    font-size: 20px;
     color: #9aa3b2;
     margin-top: -10px;
     letter-spacing: 1px;
-    text-shadow: 0 0 8px rgba(255, 50, 50, 0.6), 0 0 15px rgba(255, 50, 50, 0.3);
+    
 }
 </style>
 """, unsafe_allow_html=True)
-
-
 st.markdown("<div class='kelompok5'>Kelompok 5</div>", unsafe_allow_html=True)
+
+
+st.markdown("<p style='text-align:center; color: #9aa3b2'>Model regresi linier untuk memprediksi harga rumah berdasarkan faktor ekonomi dan geografis.</p>", unsafe_allow_html=True)
+# Tambahkan CSS font + style tulisan
 
 
 st.markdown("---")
@@ -212,26 +211,7 @@ with col_right:
         img1, img2 = luxury_img_top, luxury_img_bottom
     
     
-    if p is None:
-        pass
-    
-    elif p < 200000:
-        st.markdown("<div class='small-muted'>🏡 Rumah sederhana di area pinggiran dengan fasilitas dasar.</div>", unsafe_allow_html=True)
-    
-    elif p < 350000:
-        st.markdown("<div class='small-muted'>🏘️ Rumah kelas menengah di lokasi nyaman dekat fasilitas umum.</div>", unsafe_allow_html=True)
-    
-    elif p < 500000:
-        st.markdown("<div class='small-muted'>🏠 Rumah modern di lingkungan keluarga dengan akses mudah ke kota.</div>", unsafe_allow_html=True)
-    
-    elif p < 800000:
-        st.markdown("<div class='small-muted'>🏙️ Hunian eksklusif di kawasan populer dengan fasilitas lengkap.</div>", unsafe_allow_html=True)
-    
-    elif p < 1000000:
-        st.markdown("<div class='small-muted'>🏡 Rumah mewah di area premium dengan desain elegan dan halaman luas.</div>", unsafe_allow_html=True)
-    
-    else:
-        st.markdown("<div class='small-muted'>💎 Rumah super mewah di lokasi elit seperti Beverly Hills atau Malibu.</div>", unsafe_allow_html=True)
+   
 
     if p is None:
         st.image(img3, width=220)
@@ -256,6 +236,7 @@ with col_right:
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
 
 
 
