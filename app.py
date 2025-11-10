@@ -181,11 +181,7 @@ with col_right:
     
     
     if p is None:
-        st.markdown("""
-        <div class='small-muted' style='margin-top:10px'>
-            💭 Masukkan data dan tekan <b>Prediksi Sekarang</b> untuk melihat estimasi harga rumah serta contoh tampilannya.
-        </div>
-        """, unsafe_allow_html=True)
+        
     
     elif p < 200000:
         st.markdown("<div class='small-muted'>🏡 Rumah sederhana di area pinggiran dengan fasilitas dasar.</div>", unsafe_allow_html=True)
@@ -228,6 +224,7 @@ with col_right:
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
 
 
 
