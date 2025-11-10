@@ -120,10 +120,10 @@ st.sidebar.header("Masukkan Data Rumah")
 
 MedInc = st.sidebar.slider("Pendapatan Median (x10.000 USD)", 0.0, 20.0, 8.3, step=0.1)
 HouseAge = st.sidebar.slider("Usia Rumah (tahun)", 1, 50, 20)
-AveRooms = st.sidebar.slider("Rata-rata Jumlah Ruangan", 1.0, 30.0, 6.5, step=0.5)
+AveRooms = st.sidebar.slider("Rata-rata Jumlah Ruangan", 1.0, 30.0, 6.5, step=0.1)
 AveBedrms = st.sidebar.slider("Rata-rata Jumlah Kamar Tidur", 0.5, 20.0, 1.0, step=1)
 Population = st.sidebar.number_input("Populasi", min_value=100, max_value=100000, value=1200, step=100)
-AveOccup = st.sidebar.slider("Rata-rata Penghuni per Rumah", 1.0, 15.0, 2.8, step=0.5)
+AveOccup = st.sidebar.slider("Rata-rata Penghuni per Rumah", 1.0, 15.0, 2.8, step=0.1)
 Latitude = st.sidebar.slider("Latitude", 30.0, 42.0, 37.88, step=0.01)
 Longitude = st.sidebar.slider("Longitude", -128.0, -112.0, -122.25, step=0.01)
 
@@ -293,6 +293,7 @@ with col_right:
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
 
 
 
