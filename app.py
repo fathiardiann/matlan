@@ -111,9 +111,6 @@ st.markdown("""
 st.markdown("<div class='kelompok5'>Kelompok 5</div>", unsafe_allow_html=True)
 
 
-# Tambahkan CSS font + style tulisan
-
-
 st.markdown("---")
 
 # ---------------------------
@@ -183,59 +180,52 @@ with col_left:
         """, unsafe_allow_html=True)
 
         # Insight / deskripsi tambahan di bawah hasil prediksi
-    if p < 200000:
-        desc = """
-        Harga rumah tergolong <b>rendah</b>, kemungkinan berada di area pedesaan atau pinggiran kota
-        dengan akses terbatas ke pusat ekonomi utama.
-        """
-    elif p < 350000:
-        desc = """
-        Rumah ini berada di kategori <b>menengah ke bawah</b>, umumnya di wilayah suburban
-        dengan fasilitas standar dan lingkungan yang tenang.
-        """
-    elif p < 500000:
-        desc = """
-        Termasuk kategori <b>menengah</b> — lokasi kemungkinan di area berkembang dengan akses
-        cukup baik ke fasilitas umum dan transportasi.
-        """
-    elif p < 800000:
-        desc = """
-        Harga rumah ini <b>di atas rata-rata</b>, biasanya berlokasi di kawasan perkotaan
-        dengan lingkungan yang strategis dan permintaan tinggi.
-        """
-    elif p < 1000000:
-        desc = """
-        Termasuk kategori <b>premium</b> — rumah di kawasan populer dengan fasilitas lengkap
-        dan nilai investasi yang tinggi.
-        """
-    else:
-        desc = """
-        <b>Rumah mewah</b> — berada di area eksklusif dengan fasilitas terbaik dan nilai pasar yang stabil.
-        Cocok untuk investasi jangka panjang.
-        """
+        if p < 200000:
+            desc = """
+            Harga rumah tergolong <b>rendah</b>, kemungkinan berada di area pedesaan atau pinggiran kota
+            dengan akses terbatas ke pusat ekonomi utama.
+            """
+        elif p < 350000:
+            desc = """
+            Rumah ini berada di kategori <b>menengah ke bawah</b>, umumnya di wilayah suburban
+            dengan fasilitas standar dan lingkungan yang tenang.
+            """
+        elif p < 500000:
+            desc = """
+            Termasuk kategori <b>menengah</b> — lokasi kemungkinan di area berkembang dengan akses
+            cukup baik ke fasilitas umum dan transportasi.
+            """
+        elif p < 800000:
+            desc = """
+            Harga rumah ini <b>di atas rata-rata</b>, biasanya berlokasi di kawasan perkotaan
+            dengan lingkungan yang strategis dan permintaan tinggi.
+            """
+        elif p < 1000000:
+            desc = """
+            Termasuk kategori <b>premium</b> — rumah di kawasan populer dengan fasilitas lengkap
+            dan nilai investasi yang tinggi.
+            """
+        else:
+            desc = """
+            <b>Rumah mewah</b> — berada di area eksklusif dengan fasilitas terbaik dan nilai pasar yang stabil.
+            Cocok untuk investasi jangka panjang.
+            """
 
-    st.markdown(f"""
-    <div class="card" style='margin-top:10px'>
-        <p style='font-size:15px; color:#9aa3b2; text-align:justify;'>
-        {desc}
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+        st.markdown(f"""
+        <div class="card" style='margin-top:10px'>
+            <p style='font-size:15px; color:#9aa3b2; text-align:justify;'>
+            {desc}
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
 
     else:
-    # Pesan ringan sebelum prediksi dijalankan
+        # Pesan ringan sebelum prediksi dijalankan
         st.markdown("<div class='small-muted'>Tekan tombol <b>Prediksi Sekarang</b> untuk melihat estimasi harga dan insight.</div>", unsafe_allow_html=True)
-
-
-        # Insight area lokal
-       
 
 with col_right:
     # Tentukan gambar berdasarkan prediksi terakhir
-    if "pred" in st.session_state:
-        p = st.session_state["pred"]
-    else:
-        p = None
+    p = st.session_state.get("pred", None)
 
     # Gambar default (belum prediksi)
     question_img_top = "https://raw.githubusercontent.com/fathiardiann/matlan/refs/heads/main/retro-block-exclamation-31200.jpg"
@@ -254,11 +244,8 @@ with col_right:
     luxury_img_bottom = "https://photos.zillowstatic.com/fp/c79963958a7a845fc082b727f582e533-sc_1536_1024.webp"
     under80k1 = "https://photos.zillowstatic.com/fp/f5a57a7af4b0b60d5629cad3fca8d580-cc_ft_768.webp"
     under80k2 = "https://photos.zillowstatic.com/fp/85de92383c5bd0a8ad28c243481cf9c5-cc_ft_768.webp"
+
     # Pilih gambar berdasarkan status
-   # Pilih gambar berdasarkan status
-   # ===============================
-# Deskripsi kategori singkat
-# ===============================
     if p is None:
         img3, img4 = question_img_top, question_img_bottom
     elif p < 200000:
@@ -273,9 +260,6 @@ with col_right:
         img1, img2 = upper_img_top, upper_img_bottom
     else:
         img1, img2 = luxury_img_top, luxury_img_bottom
-    
-    
-   
 
     if p is None:
         st.image(img3, width=220)
@@ -284,57 +268,14 @@ with col_right:
         st.image(img1, width=420)
         st.image(img2, width=420)
 
-
-    
-
     # Keterangan
     if p is None:
         st.markdown("<div class='small-muted' style='margin-top:6px'>Tekan tombol <b>Prediksi Sekarang</b> untuk melihat hasil dan gambar rumah.</div>", unsafe_allow_html=True)
     else:
         st.markdown("<div class='small-muted' style='margin-top:6px'>Gambar rumah di atas sesuai kategori harga.</div>", unsafe_allow_html=True)
 
- 
-
 # ---------------------------
 # Footer
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
