@@ -121,7 +121,7 @@ st.sidebar.header("Masukkan Data Rumah")
 MedInc = st.sidebar.number_input(
     "Pendapatan Median (x10.000 USD)", 
     min_value=0.0, 
-    max_value=20.0, 
+    max_value=100.0, 
     value=8.3, 
     step=0.1
 )
@@ -273,6 +273,8 @@ with col_right:
     luxury_img_bottom = "https://photos.zillowstatic.com/fp/c79963958a7a845fc082b727f582e533-sc_1536_1024.webp"
     under80k1 = "https://photos.zillowstatic.com/fp/f5a57a7af4b0b60d5629cad3fca8d580-cc_ft_768.webp"
     under80k2 = "https://photos.zillowstatic.com/fp/85de92383c5bd0a8ad28c243481cf9c5-cc_ft_768.webp"
+    avenger1 = "https://raw.githubusercontent.com/fathiardiann/matlan/refs/heads/main/New_Avengers_Facility_AM.jpg"
+    avenger2 = "https://raw.githubusercontent.com/fathiardiann/matlan/refs/heads/main/Spider-Man-Homecoming_183-AvengersHQ.jpg"
 
     # Pilih gambar berdasarkan status
     if p is None:
@@ -287,6 +289,8 @@ with col_right:
         img1, img2 = under80k1, under80k2
     elif p < 1000000:
         img1, img2 = upper_img_top, upper_img_bottom
+    elif p > 5000000:
+        img1, img2 = avenger1, avenger2
     else:
         img1, img2 = luxury_img_top, luxury_img_bottom
 
@@ -308,6 +312,7 @@ with col_right:
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
 
 
 
