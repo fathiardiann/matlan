@@ -157,7 +157,8 @@ with col_right:
     upper_img_bottom = "https://photos.zillowstatic.com/fp/81aaf55831b4eba303f8ccfd84fa64fc-sc_1536_1024.webp"
     luxury_img_top = "https://photos.zillowstatic.com/fp/9fc42898768a6ba3e122e74b14b45abf-sc_1536_1024.webp"
     luxury_img_bottom = "https://photos.zillowstatic.com/fp/c79963958a7a845fc082b727f582e533-sc_1536_1024.webp"
-
+    under80k1 = "https://photos.zillowstatic.com/fp/f5a57a7af4b0b60d5629cad3fca8d580-cc_ft_768.webp"
+    under80k2 = "https://photos.zillowstatic.com/fp/85de92383c5bd0a8ad28c243481cf9c5-cc_ft_768.webp"
     # Pilih gambar berdasarkan status
     if p is None:
         img1, img2 = question_img_top, question_img_bottom
@@ -190,6 +191,7 @@ with col_right:
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
 
 
 
