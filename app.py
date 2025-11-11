@@ -107,8 +107,8 @@ st.markdown("""
     
 }
 </style>
-""", unsafe_allow_html=True)
-st.markdown("<div class='kelompok5'>Kelompok 5</div>", unsafe_allow_html=True)
+""", unsafe_allow_html=False)
+st.markdown("<div class='kelompok5'>Kelompok 5</div>", unsafe_allow_html=False)
 
 
 st.markdown("---")
@@ -258,7 +258,7 @@ with col_right:
 
     # Gambar default (belum prediksi)
     question_img_top = "https://raw.githubusercontent.com/fathiardiann/matlan/refs/heads/main/retro-block-exclamation-31200.jpg"
-    question_img_bottom = "https://raw.githubusercontent.com/fathiardiann/matlan/refs/heads/main/retro-block-exclamation-31200.jpg"
+    question_img_bottom = ""
 
     # Ganti URL di bawah dengan gambar kamu sendiri dari GitHub nanti
     low_img_top = "https://photos.zillowstatic.com/fp/0731b4b39b36cfc846d8e0fc3bfebb9f-cc_ft_768.webp"
@@ -312,6 +312,7 @@ with col_right:
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
 
 
 
