@@ -132,13 +132,13 @@ Population = st.sidebar.number_input("Populasi", min_value=100, max_value=100000
 AveOccup = st.sidebar.slider("Rata-rata Penghuni per Rumah", 1.0, 15.0, 2.8, step=0.1)
 Latitude = st.sidebar.slider("Latitude", 32.0, 42.0, 37.88, step=0.01)
 st.sidebar.markdown(
-    "<p style='color:#9aa3b2; font-size:12px; margin-top:-10px;'> Selatan                                  Utara</p>",
+    "<p style='color:#9aa3b2; font-size:12px; margin-top:-10px;'> Selatan                -->                  Utara</p>",
     unsafe_allow_html=True
 )
 
 Longitude = st.sidebar.slider("Longitude", -124.0, -114.0, -122.25, step=0.01)
 st.sidebar.markdown(
-    "<p style='color:#9aa3b2; font-size:12px; margin-top:-10px;'> Barat                                  Timur</p>",
+    "<p style='color:#9aa3b2; font-size:12px; margin-top:-10px;'> Barat                 -->                 Timur</p>",
     unsafe_allow_html=True
 )
 
@@ -323,6 +323,7 @@ with col_right:
 # ---------------------------
 st.markdown("---")
 st.markdown("<div style='text-align:center; color:#9aa3b2; font-size:12px'>© 2025 California Housing Predictor</div>", unsafe_allow_html=True)
+
 
 
 
