@@ -18,12 +18,7 @@ Proyek ini bertujuan untuk:
 ## 👥 Anggota Kelompok  
 📘 **Mata Kuliah:** Matematika Lanjut  
 📚 **Kelas:** 2IA18  
-👨‍💻 **Kelompok 5**
-
-> Fathi -
-> Zhalfa -
-> Daffa
-
+>> zathi
 ---
 
 ## 🧩 Dataset  
